@@ -1,2 +1,2 @@
-print("added some stuff")
-print("more stuff")
+import pygame
+import random
