@@ -1,31 +1,46 @@
 import pygame
 import random
-from button import start
+
+
+# set up pygame modules
 pygame.init()
+pygame.font.init()
+my_font = pygame.font.SysFont('Arial', 20)
+pygame.display.set_caption("TROLL CASINO!")
+button_rect = pygame.Rect(125, 125, 150, 50)
 
-r = 50
-g = 0
-b = 100
+# set up variables for the display
+size = (1274, 980)
+screen = pygame.display.set_mode(size)
 
-#window dimensions
-window_width = 1274
-window_height = 980
-window_size = ( window_width, window_height)
-bg_display = pygame.display.set_mode(window_size)
-bg_image = pygame.image.load('CASINO.jpg')
-st_button = pygame.image.load('Start button.png')
+bg = pygame.image.load("CASINO.jpg")
+start = pygame.image.load("Start button.png")
 
-# MAIN LOOP
+
+# render the text for later
+
+# The loop will carry on until the user exits the game (e.g. clicks the close button).
 run = True
-
+# -------- Main Program Loop -----------
+clock = pygame.time.Clock()
+frame = 0
 while run:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+    # --- Main event loop
 
-    bg_display.blit(bg_image,(0,0))
-    st_button.blit(st_button, (40, 60))
-    screen.blit(st_button)
+
+    for event in pygame.event.get():  # User did something
+        if event.type == pygame.QUIT:  # If user clicked close
+            run = False
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                # Call the on_mouse_button_down() function
+                if button_rect.collidepoint(event.pos):
+                    print("Button clicked!")
+
+    screen.blit(bg, (0, 0))
+    screen.blit(start, (525,40))
     pygame.display.update()
 
+
+# Once we have exited the main program loop we can stop the game engine:
 pygame.quit()
+
