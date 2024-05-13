@@ -15,8 +15,9 @@ screen = pygame.display.set_mode(size)
 
 bg = pygame.image.load("CASINO.jpg")
 start = pygame.image.load("Start button.png")
+start = pygame.transform.scale(start, (270, 90))
 
-
+lst = []
 # render the text for later
 
 # The loop will carry on until the user exits the game (e.g. clicks the close button).
@@ -31,13 +32,14 @@ while run:
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close
             run = False
-            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                # Call the on_mouse_button_down() function
-                if button_rect.collidepoint(event.pos):
-                    print("Button clicked!")
+            pos = pygame.mouse.get_pos()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x,y = event.pos
+                if start.get_rect().collidepoint(x, y):
+                    print('clicked on image')
 
     screen.blit(bg, (0, 0))
-    screen.blit(start, (525,40))
+    screen.blit(start, (505,40))
     pygame.display.update()
 
 
