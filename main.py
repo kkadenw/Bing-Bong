@@ -13,8 +13,13 @@ space_pressed = False
 
 size = (1274, 980)
 screen = pygame.display.set_mode(size)
+r = 50
+g = 0
+b = 100
 
+g_character = pygame.image.load("Gorilla Character.png")
 bg = pygame.image.load("CASINO.jpg")
+characterp_background = pygame.image.load("CharacterP Background.jpg")
 space_rendered = font.render("Press SPACE to Enter The Casino!", True, (255, 255, 255))
 
 lst = []
@@ -28,18 +33,23 @@ frame = 0
 character_pick = False
 while run:
     # --- Main event loop
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_SPACE]:
+        character_pick = True
 
 
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close
             run = False
             pos = pygame.mouse.get_pos()
-            if event.type == pygame.K_SPACE:
-                character_pick = True
 
-    screen.blit(bg, (0, 0))
-    screen.blit(space_rendered, (525, 200))
-    pygame.display.update()
+        if character_pick == False:
+            screen.blit(bg, (0, 0))
+            screen.blit(space_rendered, (525, 200))
+            pygame.display.update()
+        if character_pick == True:
+            screen.blit(characterp_background, (0, 0))
+            pygame.display.update()
 
 
 # Once we have exited the main program loop we can stop the game engine:
