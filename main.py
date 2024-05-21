@@ -18,9 +18,12 @@ g = 0
 b = 100
 
 g_character = pygame.image.load("Gorilla Character.png")
+p_character = pygame.image.load("Panda Character.png")
+sg_character = pygame.image.load("S Gorilla Character.png")
 bg = pygame.image.load("CASINO.jpg")
 characterp_background = pygame.image.load("CharacterP Background.jpg")
 space_rendered = font.render("Press SPACE to Enter The Casino!", True, (255, 255, 255))
+character_pick = font.render("Press 1 2 3 To select your character!", True, ( 255, 255, 255))
 
 lst = []
 # render the text for later
@@ -49,6 +52,9 @@ while run:
             pygame.display.update()
         if character_pick == True:
             screen.blit(characterp_background, (0, 0))
+            screen.blit(g_character, (50, 100))
+            screen.blit(p_character, (300, 100))
+            screen.blit(sg_character,( 600, 100))
             pygame.display.update()
 
 
