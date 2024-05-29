@@ -49,10 +49,13 @@ while run:
         character_pick = True
         if keys[pygame.K_1]:
             character_picked_1 = True
+            character_pick = False
         elif keys[pygame.K_2]:
             character_picked_2 = True
+            character_pick = False
         elif keys[pygame.K_3]:
             character_picked_3 = True
+            character_pick = False
 
 
     for event in pygame.event.get():  # User did something
@@ -73,6 +76,11 @@ while run:
             screen.blit(character1, (75, 400))
             screen.blit(character2, (500, 400))
             screen.blit(character3, (925 , 400))
+            pygame.display.update()
+        if character_pick == True:
+            screen.blit(character1, (25, 100))
+            screen.blit(character2, (10000000000, 10000000000))
+            screen.blit(character3, (10000000000000, 1000000000000000))
             pygame.display.update()
 
 
