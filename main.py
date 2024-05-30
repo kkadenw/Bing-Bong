@@ -21,6 +21,7 @@ b = 100
 g_character = pygame.image.load("Gorilla Character.png")
 p_character = pygame.image.load("Panda Character.png")
 sg_character = pygame.image.load("S Gorilla Character.png")
+pk_table = pygame.image.load("PokerTable.png")
 bg = pygame.image.load("CASINO.jpg")
 characterp_background = pygame.image.load("CharacterP Background.jpg")
 space_rendered = font.render("Press SPACE to Enter The Casino!", True, (255, 255, 255))
@@ -39,6 +40,7 @@ run = True
 clock = pygame.time.Clock()
 frame = 0
 character_pick = False
+character_pick2 = True
 character_picked_1 = False
 character_picked_2 = False
 character_picked_3 = False
@@ -49,13 +51,13 @@ while run:
         character_pick = True
         if keys[pygame.K_1]:
             character_picked_1 = True
-            character_pick = False
+            character_pick2 = False
         elif keys[pygame.K_2]:
             character_picked_2 = True
-            character_pick = False
+            character_pick2 = False
         elif keys[pygame.K_3]:
             character_picked_3 = True
-            character_pick = False
+            character_pick2 = False
 
 
     for event in pygame.event.get():  # User did something
@@ -77,10 +79,12 @@ while run:
             screen.blit(character2, (500, 400))
             screen.blit(character3, (925 , 400))
             pygame.display.update()
-        if character_pick == True:
+        if character_pick2 == False:
+            screen.blit(characterp_background, (0, 0))
+            screen.blit(pk_table, (700,450))
             screen.blit(character1, (25, 100))
-            screen.blit(character2, (10000000000, 10000000000))
-            screen.blit(character3, (10000000000000, 1000000000000000))
+            screen.blit(character2, (10000, 10000))
+            screen.blit(character3, (100000, 10000))
             pygame.display.update()
 
 
