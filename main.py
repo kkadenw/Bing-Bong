@@ -40,7 +40,7 @@ run = True
 clock = pygame.time.Clock()
 frame = 0
 character_pick = False
-character_pick2 = True
+character_pick2 = False
 character_picked_1 = False
 character_picked_2 = False
 character_picked_3 = False
@@ -51,13 +51,13 @@ while run:
         character_pick = True
         if keys[pygame.K_1]:
             character_picked_1 = True
-            character_pick2 = False
+            character_pick2 = True
         elif keys[pygame.K_2]:
             character_picked_2 = True
-            character_pick2 = False
+            character_pick2 = True
         elif keys[pygame.K_3]:
             character_picked_3 = True
-            character_pick2 = False
+            character_pick2 = True
 
 
     for event in pygame.event.get():  # User did something
@@ -79,7 +79,7 @@ while run:
             screen.blit(character2, (500, 400))
             screen.blit(character3, (925 , 400))
             pygame.display.update()
-        if character_pick2 == False:
+        if character_pick2 == True:
             screen.blit(characterp_background, (0, 0))
             screen.blit(pk_table, (700,450))
             screen.blit(character1, (25, 100))
